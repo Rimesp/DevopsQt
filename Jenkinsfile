@@ -42,8 +42,8 @@ pipeline {
     }
     post {
         always {
-            echo 'Archiving build artifacts'
-            archiveArtifacts artifacts: 'C:/Users/rim/Documents/QtDev/DevopsQt/build/*.exe', allowEmptyArchive: true
+                echo 'Archiving build artifacts'
+            archiveArtifacts artifacts: '**/build/*.exe', allowEmptyArchive: true
             echo 'Performing cleanup'
             // Add cleanup commands if necessary
         }
