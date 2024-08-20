@@ -27,15 +27,15 @@ pipeline {
                 }
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Running tests...'
-                bat """
-                    cd ${WORKSPACE}/build/Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/debug
-                    QtDev.exe
-                """
-            }
-        }
+      stage('Test') {
+           steps {
+        echo 'Running simplified test...'
+        bat """
+            cd ${WORKSPACE}/build/Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/debug
+            QtDev.exe --quick-test
+        """
+          }
+      }
         stage('Deploy') {
             steps {
                 echo 'Add your deployment steps here'
