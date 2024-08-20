@@ -5,7 +5,9 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 CONFIG += c++17
 
 # Output directory for build artifacts
-DESTDIR = $$PWD/build
+DESTDIR = $$PWD/build/Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/debug
+OBJECTS_DIR = $$DESTDIR/obj
+
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
