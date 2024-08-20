@@ -29,8 +29,11 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'Add your test steps here'
-                // Add your test commands or scripts here
+                echo 'Running tests...'
+                bat """
+                    cd ${WORKSPACE}/build/Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/debug
+                    QtDev.exe
+                """
             }
         }
         stage('Deploy') {
