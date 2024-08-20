@@ -43,7 +43,7 @@ pipeline {
     post {
         always {
                 echo 'Archiving build artifacts'
-            archiveArtifacts artifacts: '**/build/*.exe', allowEmptyArchive: true
+archiveArtifacts artifacts: '**/build/Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/debug/*.exe', allowEmptyArchive: false
             echo 'Performing cleanup'
             // Add cleanup commands if necessary
         }
