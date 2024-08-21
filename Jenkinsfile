@@ -34,17 +34,16 @@ pipeline {
           }
       }
         stage('Deploy') {
-        steps {
-                echo 'Deploying application to local machine'
+     steps {
                 script {
-                    def localPath = "C:\\Users\\rimouertani\\DeployedApp"
+                    def localPath = "C:\\Users\\rimouertani\\DeployedApp\\"
+                    def vmPath = "C:\\Users\\rim\\Documents\\QtDev\\DevopsQt\\build\\Desktop_Qt_5_15_2_MSVC2019_64bit-Debug\\debug\\QtDev.exe"
                     def vmUser = "rim"
                     def vmIP = "40.127.8.223"
-                    def remotePath = "C:\\Users\\rim\\Documents\\QtDev\\DevopsQt\\build\\Desktop_Qt_5_15_2_MSVC2019_64bit-Debug\\debug\\QtDev.exe"
-
+                    
                     bat """
-            scp -i C:\\Users\\rimouertani\\.ssh\\id_rsa -P 22 ${vmUser}@${vmIP}:${vmPath} ${localPath}
-            """
+                    scp -i C:\\Users\\rimouertani\\.ssh\\id_rsa -P 22 ${vmUser}@${vmIP}:${vmPath} ${localPath}
+                    """
                 }
             }
         }
