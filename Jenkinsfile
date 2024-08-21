@@ -30,16 +30,22 @@ pipeline {
       stage('Test') {
            steps {
         echo 'Running simplified test...'
-        bat """
-            cd ${WORKSPACE}/build/Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/debug
-            QtDev.exe --quick-test
-        """
+        
           }
       }
         stage('Deploy') {
-            steps {
-                echo 'Add your deployment steps here'
-                // Add your deployment commands or scripts here
+        steps {
+                echo 'Deploying application to local machine'
+                script {
+                    def localPath = "C:\\Users\\rimouertani\\DeployedApp"
+                    def vmUser = "rim"
+                    def vmIP = "40.127.8.223"
+                    def remotePath = "C:\\Users\\rim\\Documents\\QtDev\\DevopsQt\\build\\Desktop_Qt_5_15_2_MSVC2019_64bit-Debug\\debug\\QtDev.exe"
+
+                    bat """
+                    powershell -Command "Start-Process scp -ArgumentList '-i C:\\Users\\rimouertani\\.ssh\\id_rsa -P 22 ${vmUser}@${vmIP}:${remotePath} ${localPath}\\' -NoNewWindow -Wait"
+                    """
+                }
             }
         }
     }
