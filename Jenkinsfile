@@ -43,8 +43,8 @@ pipeline {
                     def remotePath = "C:\\Users\\rim\\Documents\\QtDev\\DevopsQt\\build\\Desktop_Qt_5_15_2_MSVC2019_64bit-Debug\\debug\\QtDev.exe"
 
                     bat """
-                    powershell -Command "Start-Process scp -ArgumentList '-i C:\\Users\\rimouertani\\.ssh\\id_rsa -P 22 ${vmUser}@${vmIP}:${remotePath} ${localPath}\\' -NoNewWindow -Wait"
-                    """
+            scp -i C:\\Users\\rimouertani\\.ssh\\id_rsa -P 22 ${vmUser}@${vmIP}:${vmPath} ${localPath}
+            """
                 }
             }
         }
