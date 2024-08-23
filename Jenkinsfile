@@ -34,12 +34,7 @@ pipeline {
         }
         stage('Deploy to Local Machine') {
             steps {
-                // Check if the SSH key file exists and is accessible
-                bat 'dir C:\\Users\\rimouertani\\.ssh'
-                bat 'icacls C:\\Users\\rimouertani\\.ssh\\id_rsa'
-
-                // Perform the SCP command
-                bat 'scp -i C:\\Users\\rimouertani\\.ssh\\id_rsa -P 22 rim@40.127.8.223:C:\\Users\\rim\\Documents\\QtDev\\DevopsQt\\build\\Desktop_Qt_5_15_2_MSVC2019_64bit-Debug\\debug\\QtDev.exe C:\\Users\\rimouertani\\DeployedApp\\'
+               
             }
         }
     }
