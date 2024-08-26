@@ -32,21 +32,23 @@ pipeline {
                 echo 'Running simplified test...'
             }
         }
-             stage('Deploy to Local Machine') {
+            stage('Deploy to Local Machine') {
             steps {
-                script {
-                    // Define paths
-                    def localPath = 'C:/Users/rimouertani/DeployedApp/'
-                    def remoteFilePath = 'C:/Users/rim/Documents/QtDev/DevopsQt/build/Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/debug/QtDev.exe'
-                    
-                    // Debugging output
-                    bat 'echo Checking if id_rsa exists...'
-                    bat 'dir C:/Users/rimouertani/.ssh/id_rsa'
-                    
-                    bat """
-                    echo Deploying to local machine...
-                    scp -i C:/Users/rimouertani/.ssh/id_rsa rim@40.127.8.223:"${remoteFilePath}" "${localPath}"
-                    """
+                sshagent(['my-ssh-key']) { // Use the ID of the SSH credential
+                    script {
+                        // Define paths
+                        def localPath = 'C:/Users/rimouertani/DeployedApp/'
+                        def remoteFilePath = 'C:/Users/rim/Documents/QtDev/DevopsQt/build/Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/debug/QtDev.exe'
+                        
+                        // Debugging output
+                        bat 'echo Checking if id_rsa exists...'
+                        bat 'dir C:/Users/rimouertani/.ssh/id_rsa'
+                        
+                        bat """
+                        echo Deploying to local machine...
+                        scp -i C:/Users/rimouertani/.ssh/id_rsa rim@40.127.8.223:"${remoteFilePath}" "${localPath}"
+                        """
+                    }
                 }
             }
         }
