@@ -32,10 +32,12 @@ pipeline {
                 echo 'Running simplified test...'
             }
         }
-      stage('Deploy to Local Machine') {
+           stage('Deploy to Local Machine') {
             steps {
-                echo 'Deploying to local machine...'
-                bat 'copy build\\Desktop_Qt_5_15_2_MSVC2019_64bit-Debug\\debug\\QtDev.exe C:\\Users\\rimouertani\\DeployedApp\\'
+                bat '''
+                echo Deploying to local machine...
+                copy build\\Desktop_Qt_5_15_2_MSVC2019_64bit-Debug\\debug\\QtDev.exe \\\\192.168.1.124\\DeployedApp\\
+                '''
             }
         }
     }
