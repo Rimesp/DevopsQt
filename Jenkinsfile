@@ -32,10 +32,11 @@ pipeline {
                 echo 'Running simplified test...'
             }
         }
-            stage('Deploy to Local Machine') {
+        stage('Deploy to Local Machine') {
             steps {
-                     echo 'Deploying to Local Machine'      
-       }
+                echo 'Deploying to Local Machine'
+            }
+        }
     }
     post {
         always {
